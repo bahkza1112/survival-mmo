@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>วันเดือด คืนเยือก — ต้นแบบ UI</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="clock-card"><div class="sun-mark">☀</div><div><strong id="day">วันที่ 1</strong></div></div>
+      <div class="weather-pill hot"><span>♨</span><div><small>อากาศ</small><b id="airTemp">42°C</b></div></div>
+      <div class="weather-pill cold"><span>♨</span><div><small>พื้นผิว</small><b id="surfaceTemp">58°C</b></div></div>
+      <div class="resource"><span>🍽</span><div><small>อาหาร</small><b id="foodValue">3.2K</b></div><i>▰</i></div>
+      <div class="resource"><span>💧</span><div><small>น้ำ</small><b id="waterValue">2.1K</b></div><i>▰</i></div>
+      <div class="resource"><span>⚡</span><div><small>พลังงาน</small><b id="energyValue">76%</b></div><i class="yellow">▰</i></div>
+      <div class="resource"><span>📦</span><div><small>วัสดุ</small><b id="materialsValue">1.4K</b></div><i>▰</i></div>
+      <div class="resource"><span>✚</span><div><small>ยา</small><b id="medicineValue">28</b></div><i class="red">▰</i></div>
+      <div class="resource"><span>🔋</span><div><small>แบตเตอรี่</small><b id="batteryValue">62%</b></div><i>▰</i></div>
+      <div class="people-count">👥 <span>คนในหลุมหลบภัย</span><b>5/5</b></div>
+      <div class="morale">● <span>ความสุข</span><b>67%</b></div>
+    </header>
+
+    <div class="workspace">
+      <nav class="sidebar" aria-label="เมนูหลัก">
+        <div class="brand"><span>60</span><div>วันเดือด<br><em>คืนเยือก</em></div></div>
+        <button class="nav-item active" data-view="overview">⌂ <span>ภาพรวม</span></button>
+        <button class="nav-item" data-view="people">♙ <span>สมาชิกในบ้าน</span></button>
+        <button class="nav-item" data-view="expedition">◈ <span>จัดทีมสำรวจ</span></button>
+        <button class="nav-item" data-view="inventory">▣ <span>คลังทรัพยากร</span></button>
+        <button class="nav-item" data-view="production">⚙ <span>การผลิต</span></button>
+        <button class="nav-item" data-view="events">! <span>เหตุการณ์</span><b class="badge">2</b></button>
+        <button class="nav-item" data-view="weather">♨ <span>เครื่องวัดอุณหภูมิ</span></button>
+        <button class="nav-item" data-view="story">▤ <span>บันทึกเรื่องราว</span></button>
+        <button class="nav-item" data-view="settings">⚙ <span>ตั้งค่า</span></button>
+      </nav>
+
+      <main id="mainView" class="main-view"></main>
+    </div>
+    <div id="toast" class="toast" role="status"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#172b36"/><stop offset="1" stop-color="#0e1b25"/></linearGradient>
+    <linearGradient id="header" x2="1" y2="1"><stop stop-color="#294550"/><stop offset="1" stop-color="#192f3a"/></linearGradient>
+    <linearGradient id="shopWall" x2="0" y2="1"><stop stop-color="#e8c894"/><stop offset="1" stop-color="#b98155"/></linearGradient>
+    <linearGradient id="sunWindow" x2="0" y2="1"><stop stop-color="#f9d786"/><stop offset="1" stop-color="#e98c55"/></linearGradient>
+    <linearGradient id="panel" x2="0" y2="1"><stop stop-color="#f6edda"/><stop offset="1" stop-color="#e7d8bd"/></linearGradient>
+    <linearGradient id="card" x2="0" y2="1"><stop stop-color="#fffaf0"/><stop offset="1" stop-color="#f3e8d3"/></linearGradient>
+    <linearGradient id="gold" x2="0" y2="1"><stop stop-color="#f2c46f"/><stop offset="1" stop-color="#d9923d"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#07131a" flood-opacity=".32"/></filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="10"/></filter>
+    <pattern id="grain" width="38" height="38" patternUnits="userSpaceOnUse"><circle cx="5" cy="7" r="1" fill="#fff" opacity=".07"/><circle cx="27" cy="21" r="1" fill="#142832" opacity=".08"/><path d="M2 30l5-1M21 4l4 1" stroke="#fff" opacity=".045"/></pattern>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#grain)"/>
+
+  <!-- Header and clear game status -->
+  <rect width="1600" height="112" fill="url(#header)"/>
+  <path d="M0 111H1600" stroke="#e7b96b" stroke-width="2" opacity=".7"/>
+  <g transform="translate(28 22)">
+    <rect width="66" height="66" rx="18" fill="#e9b65d"/>
+    <path d="M33 11v19M33 43v12M11 33h19M43 33h12M18 18l10 10M38 38l10 10M48 18L38 28M28 38L18 48" stroke="#fff5dd" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="33" cy="33" r="11" fill="#f8ead0" stroke="#c46c42" stroke-width="3"/>
+  </g>
+  <text x="112" y="48" fill="#fff6e7" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="26" font-weight="700">วันเดือด คืนเยือก</text>
+  <text x="113" y="78" fill="#bed0cf" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="16">เตรียมตัวก่อนภัยมาถึง</text>
+
+  <g transform="translate(535 18)">
+    <rect width="430" height="76" rx="18" fill="#142a34" stroke="#52707a" stroke-width="1.5"/>
+    <circle cx="37" cy="38" r="22" fill="#2d4d57"/>
+    <path d="M37 24v15l10 6" fill="none" stroke="#ffd77f" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="37" cy="38" r="15" fill="none" stroke="#ffd77f" stroke-width="2.5"/>
+    <text x="74" y="32" fill="#bfd0ce" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="15">เวลาเตรียมตัว</text>
+    <text x="74" y="62" fill="#ffe0a0" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="27" font-weight="700">เหลือ 10:00 นาที</text>
+    <rect x="300" y="25" width="108" height="26" rx="13" fill="#ad493b"/>
+    <text x="354" y="43" text-anchor="middle" fill="#fff5e4" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="13" font-weight="700">ก่อนเที่ยง</text>
+  </g>
+
+  <g transform="translate(986 18)">
+    <rect width="288" height="76" rx="18" fill="#213b43" stroke="#52707a" stroke-width="1.5"/>
+    <circle cx="35" cy="37" r="16" fill="#f3a753"/>
+    <path d="M35 11v-6M35 69v-6M9 37H3M67 37h-6M17 19l-5-5M58 60l-5-5M53 19l5-5M17 55l-5 5" stroke="#f3a753" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="68" y="31" fill="#bfd0ce" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="14">อุณหภูมิตอนนี้</text>
+    <text x="68" y="59" fill="#fff1d0" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="22" font-weight="700">อากาศ 33°  |  พื้นผิว 42°</text>
+  </g>
+  <g transform="translate(1295 18)">
+    <rect width="277" height="76" rx="18" fill="#364a3b" stroke="#83905f" stroke-width="1.5"/>
+    <circle cx="38" cy="38" r="21" fill="#e8bd59"/>
+    <text x="38" y="45" text-anchor="middle" fill="#55411e" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="20" font-weight="700">฿</text>
+    <text x="74" y="30" fill="#d9dfc5" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="14">เงินที่มี</text>
+    <text x="74" y="59" fill="#fff4ce" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="25" font-weight="700">2,400 บาท</text>
+  </g>
+
+  <!-- Illustrated 2D shop scene -->
+  <g filter="url(#shadow)">
+    <rect x="28" y="130" width="500" height="650" rx="24" fill="url(#panel)"/>
+    <clipPath id="sceneClip"><rect x="36" y="138" width="484" height="634" rx="18"/></clipPath>
+    <g clip-path="url(#sceneClip)">
+      <rect x="36" y="138" width="484" height="634" fill="url(#shopWall)"/>
+      <path d="M36 138h484v76H36z" fill="#71533c"/>
+      <path d="M36 203h484" stroke="#f3d7a6" stroke-width="8" opacity=".55"/>
+      <!-- shop sign -->
+      <rect x="117" y="155" width="300" height="56" rx="11" fill="#e9ca8f" stroke="#8d5a3b" stroke-width="4"/>
+      <path d="M131 164h272v37H131z" fill="#4e705f"/>
+      <text x="267" y="189" text-anchor="middle" fill="#fff3d2" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="22" font-weight="700">ร้านอุปกรณ์เดินทาง</text>
+      <text x="267" y="225" text-anchor="middle" fill="#f8e6c6" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="13">ของจำเป็นสำหรับทุกเส้นทาง</text>
+
+      <!-- sunny street through front window -->
+      <rect x="52" y="247" width="178" height="250" rx="8" fill="#5a4938"/>
+      <rect x="60" y="255" width="162" height="234" rx="4" fill="url(#sunWindow)"/>
+      <circle cx="178" cy="294" r="25" fill="#fff0b4" opacity=".94"/>
+      <circle cx="178" cy="294" r="43" fill="#ffe09a" opacity=".28" filter="url(#soft)"/>
+      <path d="M60 411l42-60 35 41 26-31 59 65v63H60z" fill="#987153" opacity=".72"/>
+      <path d="M60 451h162" stroke="#f7ce7e" stroke-width="4" opacity=".8"/>
+      <path d="M73 326c13-8 26-8 39 0M81 341c13-8 26-8 39 0M144 365c12-7 23-7 34 0" fill="none" stroke="#fff5ce" stroke-width="3" stroke-linecap="round" opacity=".65"/>
+      <path d="M139 255v234M60 372h162" stroke="#6d4e37" stroke-width="7"/>
+      <text x="141" y="480" text-anchor="middle" fill="#fff4d9" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="12" font-weight="700">ข้างนอกยังดูปกติ...</text>
+
+      <!-- shelves and outdoor goods -->
+      <rect x="250" y="249" width="250" height="255" rx="9" fill="#7c5237"/>
+      <rect x="260" y="259" width="230" height="235" fill="#d7aa70"/>
+      <path d="M260 337h230M260 415h230" stroke="#70472e" stroke-width="11"/>
+      <path d="M260 339h230M260 417h230" stroke="#f1d19a" stroke-width="3" opacity=".7"/>
+      <!-- camping backpack -->
+      <path d="M278 286q4-20 24-20t24 20v36h-48z" fill="#52745e" stroke="#344d42" stroke-width="3"/>
+      <path d="M289 273q13 11 26 0M282 300h40v13h-40z" fill="#73916d"/>
+      <!-- rolled sleeping bag -->
+      <rect x="345" y="280" width="53" height="35" rx="15" fill="#c86b43" stroke="#84452e" stroke-width="3"/>
+      <path d="M353 282v31M389 282v31" stroke="#e9a071" stroke-width="4"/>
+      <!-- lantern -->
+      <path d="M428 275q18 0 18 15v32h-36v-32q0-15 18-15z" fill="#e8c66f" stroke="#7c5836" stroke-width="3"/>
+      <path d="M419 275q9-16 18 0M410 322h36" fill="none" stroke="#7c5836" stroke-width="4"/>
+      <circle cx="428" cy="305" r="8" fill="#fff2bb"/>
+      <!-- tins and bottles -->
+      <rect x="278" y="352" width="32" height="49" rx="6" fill="#bd7250" stroke="#70472e" stroke-width="3"/>
+      <path d="M278 363h32M278 391h32" stroke="#f0c78b" stroke-width="3"/>
+      <rect x="318" y="360" width="27" height="41" rx="7" fill="#89b8a3" stroke="#4e786a" stroke-width="3"/>
+      <path d="M325 357h13v-8h-13z" fill="#4e786a"/>
+      <rect x="359" y="352" width="32" height="49" rx="6" fill="#d5a34d" stroke="#805728" stroke-width="3"/>
+      <path d="M359 363h32M359 391h32" stroke="#fff0bb" stroke-width="3"/>
+      <rect x="406" y="358" width="27" height="43" rx="7" fill="#87afc0" stroke="#496879" stroke-width="3"/>
+      <path d="M413 355h13v-8h-13z" fill="#496879"/>
+      <rect x="452" y="353" width="27" height="48" rx="6" fill="#e7e0c9" stroke="#88795d" stroke-width="3"/>
+      <path d="M452 366h27" stroke="#b95243" stroke-width="7"/>
+      <!-- boxes / folded clothes -->
+      <path d="M276 434h49l-6 43h-37z" fill="#bb8a55" stroke="#765232" stroke-width="3"/>
+      <path d="M278 445h45" stroke="#e1bd7d" stroke-width="3"/>
+      <path d="M341 438q8-12 16 0h42q8-12 16 0v37h-74z" fill="#67807c" stroke="#415b58" stroke-width="3"/>
+      <path d="M342 452h73" stroke="#b8c4a8" stroke-width="4"/>
+      <path d="M437 439h42v38h-42z" fill="#d9ba7b" stroke="#765232" stroke-width="3"/>
+      <path d="M443 447h29" stroke="#fff1ca" stroke-width="3"/>
+
+      <!-- warm light and hanging lamp -->
+      <path d="M267 213v22" stroke="#624735" stroke-width="4"/>
+      <path d="M250 235q17-18 34 0l-6 18h-22z" fill="#dda858" stroke="#745233" stroke-width="3"/>
+      <circle cx="267" cy="243" r="8" fill="#fff0b3"/>
+
+      <!-- counter -->
+      <path d="M63 552h438v28H63z" fill="#895c3d"/>
+      <path d="M79 580h406v140H79z" fill="#986846"/>
+      <path d="M79 589h406" stroke="#c3915b" stroke-width="5"/>
+      <path d="M102 600v114M461 600v114" stroke="#754c34" stroke-width="8"/>
+      <!-- shopkeeper -->
+      <path d="M311 534q0-51 44-51t44 51v45h-88z" fill="#557465"/>
+      <path d="M324 514q31 19 62 0v44h-62z" fill="#e0bb82"/>
+      <ellipse cx="355" cy="475" rx="29" ry="34" fill="#e2ac7f"/>
+      <path d="M326 474q1-40 31-41 31 1 31 39-14-19-30-18-15 1-32 20z" fill="#48392f"/>
+      <path d="M337 482h6M367 482h6" stroke="#40352e" stroke-width="3" stroke-linecap="round"/>
+      <path d="M347 496q8 6 16 0" fill="none" stroke="#a75648" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M341 510l14 14 14-14" fill="#f2e4c9"/>
+      <text x="355" y="576" text-anchor="middle" fill="#fff3d8" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="12" font-weight="700">“เลือกดูได้เลยนะ”</text>
+      <!-- counter objects -->
+      <rect x="101" y="528" width="65" height="24" rx="5" fill="#d7b16e" stroke="#795337" stroke-width="3"/>
+      <path d="M111 533h45" stroke="#fff0c9" stroke-width="3"/>
+      <rect x="195" y="523" width="33" height="29" rx="5" fill="#647f78" stroke="#3e5c56" stroke-width="3"/>
+      <circle cx="211" cy="537" r="6" fill="#e6d59e"/>
+      <!-- foreground floor -->
+      <path d="M36 721h484v51H36z" fill="#674d3c"/>
+      <path d="M36 721h484" stroke="#e2bd88" stroke-width="4"/>
+      <path d="M56 747h90M185 747h90M315 747h90M442 747h60" stroke="#98765a" stroke-width="3" opacity=".7"/>
+      <rect x="36" y="138" width="484" height="634" fill="url(#grain)" opacity=".7"/>
+    </g>
+  </g>
+  <rect x="50" y="735" width="456" height="30" rx="12" fill="#213a3a" opacity=".93"/>
+  <text x="278" y="755" text-anchor="middle" fill="#f5e6c9" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="14">ร้านยังเปิดตามปกติ — คนในเมืองยังไม่รู้เรื่องนิมิต</text>
+
+  <!-- Shopping panel -->
+  <g filter="url(#shadow)">
+    <rect x="550" y="130" width="1022" height="650" rx="24" fill="url(#panel)"/>
+  </g>
+  <text x="578" y="177" fill="#263b3e" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="27" font-weight="700">เลือกซื้อของ</text>
+  <text x="579" y="203" fill="#66736a" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="15">กดปุ่ม + เพื่อใส่ของลงตะกร้า • ใช้ทั้งเงินและเวลา</text>
+  <rect x="1395" y="151" width="150" height="36" rx="18" fill="#d8e4d3"/>
+  <circle cx="1415" cy="169" r="6" fill="#6c9368"/>
+  <text x="1430" y="174" fill="#365b49" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="14" font-weight="700">ร้านค้าเปิดอยู่</text>
+
+  <!-- Item card template 1: thermometer -->
+  <g>
+    <rect x="570" y="220" width="238" height="256" rx="18" fill="url(#card)" stroke="#d1bea0" stroke-width="1.5"/>
+    <rect x="584" y="234" width="210" height="100" rx="14" fill="#e4eadb"/>
+    <rect x="651" y="247" width="75" height="67" rx="12" fill="#374d4d"/>
+    <rect x="658" y="254" width="61" height="45" rx="7" fill="#c6e0c5"/>
+    <text x="688" y="274" text-anchor="middle" fill="#345845" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="10" font-weight="700">พื้นผิว</text>
+    <text x="688" y="291" text-anchor="middle" fill="#345845" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="15" font-weight="700">42°</text>
+    <circle cx="688" cy="306" r="3" fill="#f2c66e"/>
+    <path d="M644 313h89" stroke="#374d4d" stroke-width="6" stroke-linecap="round"/>
+    <text x="589" y="360" fill="#283d3c" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="17" font-weight="700">เครื่องวัดอุณหภูมิ</text>
+    <text x="589" y="384" fill="#66736a" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="13">ดูอากาศและพื้นผิว</text>
+    <text x="589" y="422" fill="#9b6333" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="19" font-weight="700">450 บาท</text>
+    <rect x="682" y="400" width="34" height="42" rx="12" fill="#dce7d5"/><text x="699" y="428" text-anchor="middle" fill="#53715a" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="24">−</text>
+    <rect x="722" y="400" width="32" height="42" rx="10" fill="#fff" stroke="#d7c8ae"/><text x="738" y="427" text-anchor="middle" fill="#354746" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="17" font-weight="700">0</text>
+    <rect x="760" y="400" width="36" height="42" rx="12" fill="#66866c"/><text x="778" y="428" text-anchor="middle" fill="#fff" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="24" font-weight="700">+</text>
+    <text x="589" y="461" fill="#7c877b" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="11">อุปกรณ์</text>
+  </g>
+
+  <!-- Item card 2: emergency radio -->
+  <g>
+    <rect x="818" y="220" width="238" height="256" rx="18" fill="url(#card)" stroke="#d1bea0" stroke-width="1.5"/>
+    <rect x="832" y="234" width="210" height="100" rx="14" fill="#e8e2ce"/>
+    <path d="M901 258l37-18" stroke="#455b58" stroke-width="5" stroke-linecap="round"/>
+    <rect x="886" y="255" width="101" height="62" rx="12" fill="#718c79" stroke="#435b4d" stroke-width="4"/>
+    <rect x="900" y="267" width="48" height="29" rx="4" fill="#c6d8b5"/>
+    <path d="M906 286l7-7 7 5 8-11 7 9" fill="none" stroke="#4b7258" stroke-width="2.5"/>
+    <circle cx="968" cy="273" r="5" fill="#f0cd7a"/><circle cx="968" cy="291" r="5" fill="#e7b36a"/>
+    <path d="M905 306h63" stroke="#40564d" stroke-width="3" stroke-dasharray="3 5"/>
+    <text x="837" y="360" fill="#283d3c" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="17" font-weight="700">วิทยุฉุกเฉิน</text>
+    <text x="837" y="384" fill="#66736a" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="13">รับข่าวและพยากรณ์</text>
+    <text x="837" y="422" fill="#9b6333" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="19" font-weight="700">650 บาท</text>
+    <rect x="930" y="400" width="34" height="42" rx="12" fill="#dce7d5"/><text x="947" y="428" text-anchor="middle" fill="#53715a" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="24">−</text>
+    <rect x="970" y="400" width="32" height="42" rx="10" fill="#fff" stroke="#d7c8ae"/><text x="986" y="427" text-anchor="middle" fill="#354746" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="17" font-weight="700">0</text>
+    <rect x="1008" y="400" width="36" height="42" rx="12" fill="#66866c"/><text x="1026" y="428" text-anchor="middle" fill="#fff" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="24" font-weight="700">+</text>
+    <text x="837" y="461" fill="#7c877b" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="11">อุปกรณ์</text>
+  </g>
+
+  <!-- Item card 3: first aid -->
+  <g>
+    <rect x="1066" y="220" width="238" height="256" rx="18" fill="url(#card)" stroke="#d1bea0" stroke-width="1.5"/>
+    <rect x="1080" y="234" width="210" height="100" rx="14" fill="#f0dfd2"/>
+    <rect x="1134" y="258" width="105" height="59" rx="12" fill="#cc6b57" stroke="#8c473b" stroke-width="4"/>
+    <path d="M1164 258v-9q0-10 11-10h23q11 0 11 10v9" fill="none" stroke="#8c473b" stroke-width="5"/>
+    <rect x="1177" y="269" width="20" height="38" rx="3" fill="#fff5e5"/><rect x="1168" y="278" width="38" height="20" rx="3" fill="#fff5e5"/>
+    <text x="1085" y="360" fill="#283d3c" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="17" font-weight="700">ชุดปฐมพยาบาล</text>
+    <text x="1085" y="384" fill="#66736a" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="13">ดูแลบาดเจ็บเบื้องต้น</text>
+    <text x="1085" y="422" fill="#9b6333" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="19" font-weight="700">500 บาท</text>
+    <rect x="1178" y="400" width="34" height="42" rx="12" fill="#dce7d5"/><text x="1195" y="428" text-anchor="middle" fill="#53715a" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="24">−</text>
+    <rect x="1218" y="400" width="32" height="42" rx="10" fill="#fff" stroke="#d7c8ae"/><text x="1234" y="427" text-anchor="middle" fill="#354746" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="17" font-weight="700">0</text>
+    <rect x="1256" y="400" width="36" height="42" rx="12" fill="#66866c"/><text x="1274" y="428" text-anchor="middle" fill="#fff" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="24" font-weight="700">+</text>
+    <text x="1085" y="461" fill="#7c877b" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="11">ยาและดูแล</text>
+  </g>
+
+  <!-- Item card 4: heat suit -->
+  <g>
+    <rect x="1314" y="220" width="238" height="256" rx="18" fill="url(#card)" stroke="#d1bea0" stroke-width="1.5"/>
+    <rect x="1328" y="234" width="210" height="100" rx="14" fill="#f5e1c9"/>
+    <path d="M1418 249q0-12 14-12t14 12l20 13-12 20-11-7v43h-38v-43l-11 7-12-20z" fill="#d9954f" stroke="#915d37" stroke-width="3"/>
+    <path d="M1432 242v64M1405 266l9 9M1460 266l-9 9" stroke="#ffe2a4" stroke-width="3"/>
+    <circle cx="1432" cy="256" r="8" fill="#6f8272" stroke="#455a4e" stroke-width="2"/>
+    <text x="1333" y="360" fill="#283d3c" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="17" font-weight="700">ชุดป้องกันความร้อน</text>
+    <text x="1333" y="384" fill="#66736a" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="13">ออกสำรวจตอนกลางวัน</text>
+    <text x="1333" y="422" fill="#9b6333" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="19" font-weight="700">1,200 บาท</text>
+    <rect x="1426" y="400" width="34" height="42" rx="12" fill="#dce7d5"/><text x="1443" y="428" text-anchor="middle" fill="#53715a" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="24">−</text>
+    <rect x="1466" y="400" width="32" height="42" rx="10" fill="#fff" stroke="#d7c8ae"/><text x="1482" y="427" text-anchor="middle" fill="#354746" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="17" font-weight="700">0</text>
+    <rect x="1504" y="400" width="36" height="42" rx="12" fill="#66866c"/><text x="1522" y="428" text-anchor="middle" fill="#fff" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="24" font-weight="700">+</text>
+    <text x="1333" y="461" fill="#7c877b" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="11">อุปกรณ์ป้องกัน</text>
+  </g>
+
+  <!-- Item card 5: cold suit -->
+  <g>
+    <rect x="570" y="490" width="238" height="256" rx="18" fill="url(#card)" stroke="#d1bea0" stroke-width="1.5"/>
+    <rect x="584" y="504" width="210" height="100" rx="14" fill="#dce8eb"/>
+    <path d="M674 518q0-12 14-12t14 12l20 13-12 20-11-7v43h-38v-43l-11 7-12-20z" fill="#64869a" stroke="#3b5a6a" stroke-width="3"/>
+    <path d="M688 511v64M661 535l10 9M715 535l-10 9" stroke="#d8e9e5" stroke-width="3"/>
+    <circle cx="688" cy="525" r="8" fill="#a9d2d8" stroke="#527887" stroke-width="2"/>
+    <text x="589" y="630" fill="#283d3c" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="17" font-weight="700">ชุดป้องกันความหนาว</text>
+    <text x="589" y="654" fill="#66736a" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="13">ออกสำรวจตอนกลางคืน</text>
+    <text x="589" y="692" fill="#9b6333" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="19" font-weight="700">1,200 บาท</text>
+    <rect x="682" y="670" width="34" height="42" rx="12" fill="#dce7d5"/><text x="699" y="698" text-anchor="middle" fill="#53715a" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="24">−</text>
+    <rect x="722" y="670" width="32" height="42" rx="10" fill="#fff" stroke="#d7c8ae"/><text x="738" y="697" text-anchor="middle" fill="#354746" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="17" font-weight="700">0</text>
+    <rect x="760" y="670" width="36" height="42" rx="12" fill="#66866c"/><text x="778" y="698" text-anchor="middle" fill="#fff" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="24" font-weight="700">+</text>
+    <text x="589" y="731" fill="#7c877b" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="11">อุปกรณ์ป้องกัน</text>
+  </g>
+
+  <!-- Item card 6: water -->
+  <g>
+    <rect x="818" y="490" width="238" height="256" rx="18" fill="url(#card)" stroke="#d1bea0" stroke-width="1.5"/>
+    <rect x="832" y="504" width="210" height="100" rx="14" fill="#dcebea"/>
+    <g fill="#74adba" stroke="#3e7380" stroke-width="3">
+      <path d="M884 532h13v-8h22v9l7 9v45q0 8-8 8h-31q-8 0-8-8v-45z"/>
+      <path d="M926 526h13v-8h22v9l7 9v51q0 8-8 8h-31q-8 0-8-8v-51z"/>
+      <path d="M968 532h13v-8h22v9l7 9v45q0 8-8 8h-31q-8 0-8-8v-45z"/>
+    </g>
+    <path d="M884 555h42M926 555h42M968 555h42" stroke="#d8f1e9" stroke-width="7"/>
+    <text x="837" y="630" fill="#283d3c" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="17" font-weight="700">น้ำดื่ม 6 ขวด</text>
+    <text x="837" y="654" fill="#66736a" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="13">จำเป็นต่อทุกคนในบ้าน</text>
+    <text x="837" y="692" fill="#9b6333" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="19" font-weight="700">180 บาท</text>
+    <rect x="930" y="670" width="34" height="42" rx="12" fill="#dce7d5"/><text x="947" y="698" text-anchor="middle" fill="#53715a" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="24">−</text>
+    <rect x="970" y="670" width="32" height="42" rx="10" fill="#fff" stroke="#d7c8ae"/><text x="986" y="697" text-anchor="middle" fill="#354746" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="17" font-weight="700">0</text>
+    <rect x="1008" y="670" width="36" height="42" rx="12" fill="#66866c"/><text x="1026" y="698" text-anchor="middle" fill="#fff" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="24" font-weight="700">+</text>
+    <text x="837" y="731" fill="#7c877b" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="11">เสบียง</text>
+  </g>
+
+  <!-- Item card 7: food -->
+  <g>
+    <rect x="1066" y="490" width="238" height="256" rx="18" fill="url(#card)" stroke="#d1bea0" stroke-width="1.5"/>
+    <rect x="1080" y="504" width="210" height="100" rx="14" fill="#eee3cd"/>
+    <rect x="1134" y="520" width="43" height="66" rx="9" fill="#c28a4f" stroke="#805830" stroke-width="3"/>
+    <path d="M1134 533h43M1134 574h43" stroke="#f2d7a6" stroke-width="4"/>
+    <rect x="1190" y="520" width="43" height="66" rx="9" fill="#718c69" stroke="#455d43" stroke-width="3"/>
+    <path d="M1190 533h43M1190 574h43" stroke="#d9e2b5" stroke-width="4"/>
+    <circle cx="1155" cy="553" r="9" fill="#f2d7a6"/><path d="M1211 544q12 9 0 18-12-9 0-18z" fill="#d6dcae"/>
+    <text x="1085" y="630" fill="#283d3c" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="17" font-weight="700">อาหารแห้ง 3 มื้อ</text>
+    <text x="1085" y="654" fill="#66736a" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="13">เก็บได้นาน ไม่ต้องแช่เย็น</text>
+    <text x="1085" y="692" fill="#9b6333" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="19" font-weight="700">320 บาท</text>
+    <rect x="1178" y="670" width="34" height="42" rx="12" fill="#dce7d5"/><text x="1195" y="698" text-anchor="middle" fill="#53715a" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="24">−</text>
+    <rect x="1218" y="670" width="32" height="42" rx="10" fill="#fff" stroke="#d7c8ae"/><text x="1234" y="697" text-anchor="middle" fill="#354746" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="17" font-weight="700">0</text>
+    <rect x="1256" y="670" width="36" height="42" rx="12" fill="#66866c"/><text x="1274" y="698" text-anchor="middle" fill="#fff" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="24" font-weight="700">+</text>
+    <text x="1085" y="731" fill="#7c877b" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="11">เสบียง</text>
+  </g>
+
+  <!-- Item card 8: batteries -->
+  <g>
+    <rect x="1314" y="490" width="238" height="256" rx="18" fill="url(#card)" stroke="#d1bea0" stroke-width="1.5"/>
+    <rect x="1328" y="504" width="210" height="100" rx="14" fill="#e7e6d6"/>
+    <g transform="translate(1388 520)">
+      <rect x="0" y="12" width="36" height="62" rx="8" fill="#d5b95f" stroke="#77612e" stroke-width="3"/>
+      <rect x="11" y="5" width="14" height="8" rx="2" fill="#77612e"/>
+      <path d="M18 26v20M9 36h18" stroke="#fff1c4" stroke-width="4"/>
+      <rect x="45" y="12" width="36" height="62" rx="8" fill="#6c8e84" stroke="#405c54" stroke-width="3"/>
+      <rect x="56" y="5" width="14" height="8" rx="2" fill="#405c54"/>
+      <path d="M63 26v20M54 36h18" stroke="#e4f0d5" stroke-width="4"/>
+    </g>
+    <text x="1333" y="630" fill="#283d3c" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="17" font-weight="700">แบตเตอรี่ 4 ก้อน</text>
+    <text x="1333" y="654" fill="#66736a" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="13">ใช้กับวิทยุและไฟฉาย</text>
+    <text x="1333" y="692" fill="#9b6333" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="19" font-weight="700">150 บาท</text>
+    <rect x="1426" y="670" width="34" height="42" rx="12" fill="#dce7d5"/><text x="1443" y="698" text-anchor="middle" fill="#53715a" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="24">−</text>
+    <rect x="1466" y="670" width="32" height="42" rx="10" fill="#fff" stroke="#d7c8ae"/><text x="1482" y="697" text-anchor="middle" fill="#354746" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="17" font-weight="700">0</text>
+    <rect x="1504" y="670" width="36" height="42" rx="12" fill="#66866c"/><text x="1522" y="698" text-anchor="middle" fill="#fff" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="24" font-weight="700">+</text>
+    <text x="1333" y="731" fill="#7c877b" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="11">อุปกรณ์</text>
+  </g>
+
+  <!-- Cart and action footer -->
+  <rect x="28" y="795" width="1544" height="82" rx="20" fill="#203740" stroke="#597078" stroke-width="1.5"/>
+  <g transform="translate(54 814)">
+    <circle cx="21" cy="21" r="21" fill="#e0b45d"/>
+    <path d="M10 11h5l3 18h19l4-13H17M21 35a2 2 0 1 0 0 .1M34 35a2 2 0 1 0 0 .1" fill="none" stroke="#3b473b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="58" y="18" fill="#c1d0cc" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="13">ตะกร้าสินค้า</text>
+    <text x="58" y="44" fill="#fff2d2" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="19" font-weight="700">0 ชิ้น  •  รวม 0 บาท</text>
+  </g>
+  <path d="M507 813v46" stroke="#587078" stroke-width="1.5"/>
+  <text x="540" y="829" fill="#c1d0cc" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="13">เงินคงเหลือหลังซื้อ</text>
+  <text x="540" y="855" fill="#e9c875" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="22" font-weight="700">2,400 บาท</text>
+  <text x="775" y="841" fill="#95ada9" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="13">ยืนยันการซื้อแล้ว เวลาจะเดินต่อ</text>
+  <rect x="1180" y="811" width="170" height="50" rx="15" fill="#415b5b" stroke="#728a78" stroke-width="1.5"/>
+  <text x="1265" y="842" text-anchor="middle" fill="#e8eee1" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="16" font-weight="700">กลับไปหาเงิน</text>
+  <rect x="1365" y="811" width="180" height="50" rx="15" fill="url(#gold)" stroke="#f8d88f" stroke-width="1.5"/>
+  <text x="1455" y="842" text-anchor="middle" fill="#4f3b24" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="17" font-weight="700">ยืนยันการซื้อ</text>
+
+  <text x="800" y="895" text-anchor="middle" fill="#819895" font-family="Leelawadee UI,Tahoma,sans-serif" font-size="12">ภาพคอนเซปต์หน้าร้าน  •  2D ภาพประกอบ  •  ตัวอย่างหน้าจอภาษาไทย</text>
+</svg>
