@@ -775,13 +775,13 @@ missionResultView=function(){
   const art=r.combat?.happened?(r.combat.delta>0?'combat-win.png':r.combat.delta<0?'combat-loss.png':'combat-retreat.png'):(r.lost?.length?'combat-loss.png':r.score>=68?'survivors-rain.png':'combat-retreat.png');
   return html.replace(/assets\/locations\/[^')"]+/,`assets/events/${art}`);
 };
-const difficultyProfiles={
+var difficultyProfiles={
   normal:{label:'ปกติ',budget:10000,foodUse:1,waterUse:1,combatChance:1,deathBonus:0,lootPenalty:0,lootChance:1,rareLootChance:1,description:'ทรัพยากรและความเสี่ยงสมดุล เหมาะสำหรับการเริ่มเล่น'},
   hard:{label:'ยาก',budget:7000,foodUse:1.1,waterUse:1.1,combatChance:1.18,deathBonus:.06,lootPenalty:8,lootChance:.78,rareLootChance:.65,description:'ของแพงขึ้นในความหมายของการบริหาร เสบียงลดเร็ว ศัตรูพบได้บ่อยขึ้น'},
   extreme:{label:'โคตรยาก',budget:5000,foodUse:1.25,waterUse:1.25,combatChance:1.38,deathBonus:.13,lootPenalty:17,lootChance:.55,rareLootChance:.38,description:'เริ่มต้นขาดแคลน การปะทะรุนแรง และของหายากมาก'},
   impossible:{label:'แกไม่รอดแน่',budget:2500,foodUse:1.45,waterUse:1.45,combatChance:1.65,deathBonus:.22,lootPenalty:28,lootChance:.35,rareLootChance:.18,description:'งบน้อยที่สุด ศัตรูอันตราย เสบียงหมดเร็ว และโอกาสเสียสมาชิกสูง'}
 };
-function difficultyProfile(){return difficultyProfiles[gameState.difficulty]||difficultyProfiles.normal}
+function difficultyProfile(){return (difficultyProfiles&&difficultyProfiles[gameState.difficulty])||{label:'ปกติ',budget:10000,foodUse:1,waterUse:1,combatChance:1,deathBonus:0,lootPenalty:0,lootChance:1,rareLootChance:1,description:'ทรัพยากรและความเสี่ยงสมดุล'}}
 function applyPendingDifficulty(){try{const key=sessionStorage.getItem('pending-difficulty');if(!key||!difficultyProfiles[key])return;gameState.difficulty=key;gameState.budget=difficultyProfiles[key].budget;gameState.prepDone=false;sessionStorage.removeItem('pending-difficulty')}catch(e){}}
 function chooseDifficulty(key){const profile=difficultyProfiles[key]||difficultyProfiles.normal;const begin=()=>{try{localStorage.removeItem('last-light-save');sessionStorage.setItem('pending-difficulty',key);sessionStorage.setItem('last-light-start','1')}catch(e){}location.reload()};document.querySelector('.difficulty-backdrop')?.remove();if(hasSavedRun())showTitleConfirm(`เริ่มเกมใหม่ · ${profile.label}`,`เซฟเดิมจะถูกลบและเริ่มด้วยงบ ${profile.budget.toLocaleString()} เครดิต`,begin);else begin()}
 function showDifficultyPicker(){
