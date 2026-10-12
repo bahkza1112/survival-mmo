@@ -297,7 +297,7 @@ const shopItems={
   flash:{icon:'✨',name:'ระเบิดแสง x1',desc:'ทำให้ศัตรูเสียจังหวะชั่วคราว',cost:30,apply:()=>{gameState.grenades.flash+=1}},
   armor:{icon:'🛡️',name:'เสื้อเกราะเบา x1',desc:'ลดความเสียหายระหว่างปะทะ',cost:800,apply:()=>{gameState.armor.light+=1}},
   heavyArmor:{icon:'🛡️',name:'เสื้อเกราะหนัก x1',desc:'ลดความเสียหายได้มาก แต่น้ำหนักสูง',cost:1600,apply:()=>{gameState.armor.heavy+=1}},
-  storageRoom:{icon:'🗄️',name:'สร้าง/อัปเกรดคลังเก็บของ x1',desc:'เพิ่มพื้นที่เก็บของถาวร +2 กก.',cost:1500,apply:()=>gameState.facilities.storage=(gameState.facilities.storage||0)+1},
+  storageRoom:{icon:'🗄️',name:'สร้าง/อัปเกรดคลังเก็บของ x1',desc:'เพิ่มพื้นที่เก็บของถาวร +20 หน่วย',cost:1500,apply:()=>gameState.facilities.storage=(gameState.facilities.storage||0)+1},
   productionRoom:{icon:'⚙️',name:'สร้าง/อัปเกรดห้องผลิต x1',desc:'ปลดล็อกการผลิตและลดเวลางาน',cost:2000,apply:()=>gameState.facilities.production=(gameState.facilities.production||0)+1},
   medicalRoom:{icon:'🏥',name:'สร้าง/อัปเกรดห้องพยาบาล x1',desc:'ปลดล็อกการรักษาและฟื้นฟูสมาชิก',cost:1800,apply:()=>gameState.facilities.medical=(gameState.facilities.medical||0)+1},
   generatorRoom:{icon:'⚡',name:'สร้าง/อัปเกรดห้องเครื่อง x1',desc:'ปลดล็อกพลังงานและเพิ่มความปลอดภัย',cost:2200,apply:()=>{gameState.facilities.generator=(gameState.facilities.generator||0)+1;gameState.energy=Math.max(gameState.energy,25);gameState.security=Math.max(gameState.security,25)}}
@@ -866,7 +866,7 @@ window.enterShelter=enterShelter;window.reviewPrep=reviewPrep;window.confirmPrep
 
 // Storage capacity is shared by the prep cart and the permanent bunker stockpile.
 const prepItemWeight={food:1,water:1,material:1,medicine:1,battery:1,heat:2,cold:2,radio:1,pistol:2,rifle:3,sniper:4,machineGun:6,shotgun:4,melee:2,ammo:1,frag:1,smoke:1,flash:1,armor:4,heavyArmor:7,storageRoom:0,productionRoom:0,medicalRoom:0,generatorRoom:0};
-function storageCapacityForCart(){return 40+((gameState.facilities?.storage||0)+(shoppingCart.storageRoom||0))*10}
+function storageCapacityForCart(){return 160+((gameState.facilities?.storage||0)+(shoppingCart.storageRoom||0))*20}
 function storageLoadForCart(cart=shoppingCart){return Object.entries(cart||{}).reduce((sum,[key,count])=>sum+(prepItemWeight[key]||0)*count,0)}
 function storageLoad(){return storageLoadForCart({food:Math.ceil((gameState.food||0)/10),water:Math.ceil((gameState.water||0)/10),material:Math.ceil((gameState.materials||0)/10),medicine:gameState.medicine||0,battery:Math.ceil((gameState.battery||0)/10),heat:gameState.heatSuit||0,cold:gameState.coldSuit||0,radio:gameState.tools||0,pistol:gameState.weapons?.pistol||0,rifle:gameState.weapons?.rifle||0,sniper:gameState.weapons?.sniper||0,machineGun:gameState.weapons?.machineGun||0,shotgun:gameState.weapons?.shotgun||0,melee:gameState.weapons?.melee||0,ammo:Math.ceil(Object.values(gameState.ammo||{}).reduce((a,n)=>a+n,0)/5),frag:gameState.grenades?.frag||0,smoke:gameState.grenades?.smoke||0,flash:gameState.grenades?.flash||0,armor:gameState.armor?.light||0,heavyArmor:gameState.armor?.heavy||0})}
 const buyItemWithCapacity=buyItem;
@@ -892,7 +892,7 @@ showRoom=function(key){
   showRoomBaseFinal(key);
   const level=roomLevel(key),stats=document.querySelector('.room-detail-stats');
   if(!stats)return;
-  const detail=key==='storage'?`คลัง ${storageLoad()}/${40+(gameState.facilities?.storage||0)*10} หน่วย` : key==='engine'?`ระดับ ${level} · พลังงาน ${gameState.energy}%`:key==='medical'?`ระดับ ${level} · ยา ${gameState.medicine} ชุด`:key==='production'?`ระดับ ${level} · คิวผลิต ${productionQueue.length}/5`:`ระดับฐาน ${Math.max(1,level)}`;
+  const detail=key==='storage'?`คลัง ${storageLoad()}/${160+(gameState.facilities?.storage||0)*20} หน่วย` : key==='engine'?`ระดับ ${level} · พลังงาน ${gameState.energy}%`:key==='medical'?`ระดับ ${level} · ยา ${gameState.medicine} ชุด`:key==='production'?`ระดับ ${level} · คิวผลิต ${productionQueue.length}/5`:`ระดับฐาน ${Math.max(1,level)}`;
   stats.insertAdjacentHTML('beforeend',`<span>สถานะห้อง <b>${detail}</b></span>`);
 };
 window.showRoom=showRoom;
