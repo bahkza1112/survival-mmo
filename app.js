@@ -433,7 +433,7 @@ const productionRecipes={
   food:{icon:'🍽️',name:'อาหารแห้ง x300',desc:'แปรรูปวัตถุดิบเป็นเสบียง · ผลิตจำนวนมากช่วยลดเวลาต่อชุดเล็กน้อย',days:1,cost:{materials:15,energy:4},apply:()=>gameState.food+=300},
   battery:{icon:'🔋',name:'แบตเตอรี่ +15%',desc:'ประกอบแบตเตอรี่สำรอง ต้องตรวจเซลล์หลายขั้นตอน',days:2,cost:{materials:20,energy:10},apply:()=>gameState.battery=Math.min(100,gameState.battery+15)},
   medicine:{icon:'🩹',name:'ชุดปฐมพยาบาล x2',desc:'จัดชุดรักษาบาดแผลและฆ่าเชื้อ',days:2,cost:{materials:25,energy:3},apply:()=>gameState.medicine+=2},
-  repair:{icon:'⚙️',name:'ซ่อมเครื่องกำเนิดไฟฟ้า',desc:'ถอดชิ้นส่วน ตรวจระบบ และคืนพลังงานให้ฐาน',days:3,cost:{materials:30,energy:0},apply:()=>gameState.energy=Math.min(100,gameState.energy+12)}
+  repair:{icon:'⚙️',name:'ซ่อมเครื่องกำเนิดไฟฟ้า',desc:'ถอดชิ้นส่วน ตรวจระบบ และคืนพลังงานให้ฐาน',days:3,cost:{materials:30,energy:0},apply:()=>gameState.energy=Math.min(100,gameState.energy+20)}
 };
 let productionQueue=[];
 try{const savedProduction=JSON.parse(localStorage.getItem('last-light-save')||'null');if(savedProduction&&Array.isArray(savedProduction.productionQueue))productionQueue=savedProduction.productionQueue}catch(e){}
