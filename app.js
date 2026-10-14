@@ -466,7 +466,7 @@ const weaponCatalog={pistol:{name:'ปืนสั้น',ammo:'pistol',power:8,
 const armorCatalog={none:{name:'ไม่ใส่เกราะ',protection:0,weight:0},light:{name:'เสื้อเกราะเบา',protection:7,weight:2},heavy:{name:'เสื้อเกราะหนัก',protection:14,weight:4}};
 const grenadeCatalog={none:{name:'ไม่พกระเบิด',weight:0},frag:{name:'ระเบิดมือ',weight:1,power:12},smoke:{name:'ระเบิดควัน',weight:1,power:4},flash:{name:'ระเบิดแสง',weight:1,power:7}};
 let expeditionPlan={days:1,risk:'กลาง',gear:{rations:true,medical:false,scanner:false,weapon:'rifle',armor:'light',grenade:'smoke'}};
-function normalizeCombatGear(g){g=g||{};g.weapon=weaponCatalog[g.weapon]?g.weapon:'rifle';g.armor=armorCatalog[g.armor]?g.armor:'light';g.grenade=grenadeCatalog[g.grenade]?g.grenade:'none';return g}
+function normalizeCombatGear(g){g=g||{};const ownedWeapons=Object.keys(weaponCatalog).filter(k=>(gameState.weapons?.[k]||0)>0);g.weapon=weaponCatalog[g.weapon]&&ownedWeapons.includes(g.weapon)?g.weapon:(ownedWeapons[0]||'rifle');const ownedArmor=Object.keys(armorCatalog).filter(k=>k==='none'||(gameState.armor?.[k]||0)>0);g.armor=armorCatalog[g.armor]&&ownedArmor.includes(g.armor)?g.armor:'none';const ownedGrenades=Object.keys(grenadeCatalog).filter(k=>k==='none'||(gameState.grenades?.[k]||0)>0);g.grenade=grenadeCatalog[g.grenade]&&ownedGrenades.includes(g.grenade)?g.grenade:'none';return g}
 function combatLoadout(){const g=normalizeCombatGear(expeditionPlan.gear),w=weaponCatalog[g.weapon],a=armorCatalog[g.armor],n=grenadeCatalog[g.grenade];return {gear:g,weapon:w,armor:a,grenade:n}}
 function combatControls(gear){const w=Object.entries(weaponCatalog).map(([k,v])=>`<option value="${k}" ${gear.weapon===k?'selected':''}>${v.name} · ${v.weight} กก.</option>`).join('');const a=Object.entries(armorCatalog).map(([k,v])=>`<option value="${k}" ${gear.armor===k?'selected':''}>${v.name}</option>`).join('');const n=Object.entries(grenadeCatalog).map(([k,v])=>`<option value="${k}" ${gear.grenade===k?'selected':''}>${v.name}${k==='none'?'':` · ${gameState.grenades[k]||0} ลูก`}</option>`).join('');const ammo=gear.weapon==='melee'?'ไม่ใช้กระสุน':`${gameState.ammo[weaponCatalog[gear.weapon].ammo]||0} นัด`;return `<div class="combat-loadout"><h3>อาวุธและการปะทะ</h3><label>อาวุธ<select onchange="setCombatLoadout('weapon',this.value)">${w}</select></label><small>กระสุน: ${ammo}</small><label>เกราะ<select onchange="setCombatLoadout('armor',this.value)">${a}</select></label><label>ระเบิด<select onchange="setCombatLoadout('grenade',this.value)">${n}</select></label></div>`}
 function setCombatLoadout(key,value){normalizeCombatGear(expeditionPlan.gear)[key]=value;persistGame();render('expedition')}
@@ -754,11 +754,15 @@ window.render=function(view='overview'){if(view==='weather'){main.innerHTML=weat
 // Combat UI polish: show the practical trade-offs before the player commits gear.
 const combatControlsBase=combatControls;
 combatControls=function(gear){
-  const w=Object.entries(weaponCatalog).map(([k,v])=>`<option value="${k}" ${gear.weapon===k?'selected':''}>${v.name} · พลัง ${v.power} · ${v.weight} กก.</option>`).join('');
-  const a=Object.entries(armorCatalog).map(([k,v])=>`<option value="${k}" ${gear.armor===k?'selected':''}>${v.name} · ลดความเสียหาย ${v.protection}</option>`).join('');
-  const n=Object.entries(grenadeCatalog).map(([k,v])=>`<option value="${k}" ${gear.grenade===k?'selected':''}>${v.name}${k==='none'?'':` · พลัง ${v.power} · เหลือ ${gameState.grenades[k]||0}`}</option>`).join('');
-  const ammo=gear.weapon==='melee'?'ไม่ใช้กระสุน':`${gameState.ammo[weaponCatalog[gear.weapon].ammo]||0} นัด`;
-  return `<div class="combat-loadout"><h3>อาวุธและการปะทะ</h3><label>อาวุธ<select onchange="setCombatLoadout('weapon',this.value)">${w}</select></label><small>กระสุนพร้อมใช้: ${ammo}</small><label>เกราะ<select onchange="setCombatLoadout('armor',this.value)">${a}</select></label><label>ระเบิด<select onchange="setCombatLoadout('grenade',this.value)">${n}</select></label><p class="loadout-tip">อาวุธแรงขึ้นช่วยชนะการปะทะ แต่ใช้น้ำหนักและกระสุนมากขึ้น</p></div>`;
+  const current=normalizeCombatGear({...gear});
+  const ownedWeapons=Object.entries(weaponCatalog).filter(([k])=>(gameState.weapons?.[k]||0)>0);
+  const w=ownedWeapons.length?ownedWeapons.map(([k,v])=>`<option value="${k}" ${current.weapon===k?'selected':''}>${v.name} · พลัง ${v.power} · ${v.weight} กก. · มี ${gameState.weapons[k]} ชิ้น</option>`).join(''):'<option value="rifle" selected disabled>ยังไม่มีอาวุธในคลัง</option>';
+  const ownedArmor=Object.entries(armorCatalog).filter(([k])=>k==='none'||(gameState.armor?.[k]||0)>0);
+  const a=ownedArmor.map(([k,v])=>`<option value="${k}" ${current.armor===k?'selected':''}>${v.name} · ลดความเสียหาย ${v.protection}${k==='none'?'':' · มี '+(gameState.armor[k]||0)+' ตัว'}</option>`).join('');
+  const ownedGrenades=Object.entries(grenadeCatalog).filter(([k])=>k==='none'||(gameState.grenades?.[k]||0)>0);
+  const n=ownedGrenades.map(([k,v])=>`<option value="${k}" ${current.grenade===k?'selected':''}>${v.name}${k==='none'?'':` · พลัง ${v.power} · เหลือ ${gameState.grenades[k]||0}`}</option>`).join('');
+  const ammo=current.weapon==='melee'?'ไม่ใช้กระสุน':`${gameState.ammo?.[weaponCatalog[current.weapon].ammo]||0} นัด`;
+  return `<div class="combat-loadout"><h3>อาวุธและการปะทะ</h3><label>อาวุธ<select onchange="setCombatLoadout('weapon',this.value)">${w}</select></label><small>กระสุนพร้อมใช้: ${ammo}</small><label>เกราะ<select onchange="setCombatLoadout('armor',this.value)">${a}</select></label><label>ระเบิด<select onchange="setCombatLoadout('grenade',this.value)">${n}</select></label><p class="loadout-tip">จะแสดงเฉพาะอุปกรณ์ที่มีในคลังเท่านั้น</p></div>`;
 };
 const missionResultEnhancedBase=missionResultView;
 missionResultView=function(){
