@@ -315,9 +315,9 @@ function showItemDetails(key){
 let shoppingCart={};
 function buyItem(key){const item=shopItems[key];if(!item)return;item.cost=Math.max(10,Math.round(item.cost/10)*10);if(gameState.budget<item.cost){notify('งบไม่พอสำหรับของชิ้นนี้');return}gameState.budget-=item.cost;shoppingCart[key]=(shoppingCart[key]||0)+1;render('prep');}
 function removeItem(key){const item=shopItems[key];if(!item||!shoppingCart[key])return;shoppingCart[key]--;gameState.budget+=item.cost;if(shoppingCart[key]<=0)delete shoppingCart[key];render('prep');}
-function enterShelter(){document.body.classList.remove('prep-mode');
+function enterShelter(){
   const total=Object.values(shoppingCart).reduce((sum,n)=>sum+n,0);if(!total){notify('เลือกของอย่างน้อย 1 รายการก่อนเข้าหลุมหลบภัย');return}
-  Object.entries(shoppingCart).forEach(([key,count])=>{for(let i=0;i<count;i++)shopItems[key].apply()});shoppingCart={};gameState.prepDone=true;persistGame();updateResourceBar();leaveTitleScreen?.();notify('เตรียมฐานเสร็จแล้ว — เข้าหลุมหลบภัย');window.render('overview');
+  Object.entries(shoppingCart).forEach(([key,count])=>{for(let i=0;i<count;i++)shopItems[key].apply()});shoppingCart={};gameState.prepDone=true;document.body.classList.remove('prep-mode');persistGame();updateResourceBar();leaveTitleScreen?.();notify('เตรียมฐานเสร็จแล้ว — เข้าหลุมหลบภัย');window.render('overview');
 }
 window.enterShelter=enterShelter;
 function prep(){
@@ -932,6 +932,7 @@ function importSave(event){const file=event.target.files?.[0];if(!file)return;co
 function filterInventoryItems(query='',category='all'){const q=query.trim().toLowerCase();document.querySelectorAll('.inventory-real-card').forEach(card=>{const text=card.textContent.toLowerCase();const cat=card.querySelector('small')?.textContent||'';card.style.display=(!q||text.includes(q))&&(category==='all'||cat===category)?'':'none'})}
 const inventoryViewWithFilter=inventoryView;
 inventoryView=function(){let html=inventoryViewWithFilter();html=html.replace('<span class="tag">อัปเดตตามสถานะจริง</span>',`<div class="inventory-tools"><input placeholder="ค้นหาไอเท็ม..." oninput="filterInventoryItems(this.value,document.querySelector('.inventory-filter')?.value)"><select class="inventory-filter" onchange="filterInventoryItems(document.querySelector('.inventory-tools input')?.value,this.value)"><option value="all">ทุกประเภท</option><option>เสบียง</option><option>วัสดุ</option><option>อาวุธ</option><option>ป้องกัน</option><option>พลังงาน</option></select></div>`);return html}
+
 
 
 
