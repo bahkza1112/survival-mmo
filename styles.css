@@ -109,3 +109,5 @@
 .shop-buy-group{display:grid;gap:5px;justify-items:stretch}.shop-qty{width:58px;box-sizing:border-box;padding:6px 5px;border:1px solid #4a6971;border-radius:6px;background:#091b23;color:#f7e2ad;text-align:center;font:inherit;font-size:12px}.shop-buy-group .shop-buy{min-width:58px}.shop-buy-group .shop-buy span{font-size:16px}
 /* Preparation is a focused shopping screen; the full HUD returns after entering the shelter. */
 .prep-mode .topbar,.prep-mode .sidebar{display:none!important}.prep-mode .workspace{display:block;min-height:100vh}.prep-mode .main-view{min-height:100vh;padding-top:24px}
+.sidebar{display:flex;flex-direction:column}.nav-divider{height:1px;background:#2b4149;margin:12px 8px 6px}.settings-nav{margin-top:auto!important;color:#91a8aa;font-size:13px}.settings-nav:hover{color:#fff2c7}
+@media(max-width:720px){.sidebar{display:flex;flex-direction:row}.nav-divider{width:1px;height:28px;margin:0 5px}.settings-nav{margin-top:0!important}}
