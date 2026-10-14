@@ -838,6 +838,7 @@ function prepItemImpact(key){
   };
   return impacts[key]||'อุปกรณ์สำหรับการเอาตัวรอด';
 }
+function addRecommendedItem(key,target){const current=shoppingCart[key]||0;const need=Math.max(0,target-current);if(!need)return;const item=shopItems[key];const cost=item.cost*need;if(gameState.budget<cost){notify('งบไม่พอสำหรับคำแนะนำนี้');return}gameState.budget-=cost;shoppingCart[key]=current+need;render('prep');notify(`เพิ่ม${item.name.replace(/ x1$/,'')} ${need} หน่วยแล้ว`)}
 function prepReadiness(){
   const cart=shoppingCart||{};
   const total=Object.values(cart).reduce((sum,n)=>sum+n,0);
@@ -850,7 +851,7 @@ function reviewPrep(){
   const state=prepReadiness();
   if(!state.total){notify('เลือกของก่อนตรวจสอบการเข้าหลุมหลบภัย');return}
   const rows=Object.entries(shoppingCart).filter(([,n])=>n>0).map(([key,count])=>`<div class="prep-review-row"><span>${shopIcon(key,shopItems[key].icon)}</span><div><b>${shopItems[key].name}</b><small>${prepItemImpact(key)}</small></div><strong>x${count}</strong></div>`).join('');
-  const warning=state.missing.length?`<div class="prep-review-warning">ยังไม่พร้อม: ต้องมี ${state.missing.join(' และ ')}</div>`:'';
+  const warning=state.missing.length?`<div class="prep-review-warning"><b>คำแนะนำก่อนเริ่ม</b><span>ควรเตรียม ${state.missing.join(' และ ')} เพื่อให้ครอบครัวผ่านวันแรกได้ปลอดภัย</span></div>`:'';
   main.insertAdjacentHTML('beforeend',`<div class="prep-review-backdrop"><section class="panel prep-review"><span class="tag">ตรวจสอบก่อนเริ่มเกม</span><h2>สรุปเสบียงและอุปกรณ์</h2><p class="muted">ของทั้งหมดจะถูกส่งเข้าคลังและอยู่กับคุณจนจบเกม</p><div class="prep-review-list">${rows}</div>${warning}<div class="prep-review-total"><span>ใช้เงิน ${difficultyProfile().budget-gameState.budget} เครดิต</span><b>เหลือ ${gameState.budget} เครดิต</b></div><div class="prep-review-actions"><button class="secondary" onclick="this.closest('.prep-review-backdrop').remove()">กลับไปแก้ไข</button><button class="primary" onclick="confirmPrep()" ${state.ready?'':'disabled'}>ยืนยันและเข้าหลุมหลบภัย ▶</button></div></section></div>`);
 }
 function confirmPrep(){
@@ -863,7 +864,7 @@ prep=function(){
   const state=prepReadiness();
   const totalCost=difficultyProfile().budget-gameState.budget;
   const cartSummary=state.total?`เลือกแล้ว ${state.total} ชิ้น · ใช้เงิน ${totalCost} เครดิต`:'ยังไม่ได้เลือกของ';
-  const missing=state.missing.length?`<small class="prep-missing">ต้องเพิ่ม: ${state.missing.join(' และ ')}</small>`:'';
+  const needFood=Math.max(0,foodNeed-(shoppingCart.food||0)),needWater=Math.max(0,waterNeed-(shoppingCart.water||0));const missing=(needFood||needWater)?`<div class="prep-recommendation"><b>คำแนะนำสำหรับวันแรก</b><small>เตรียมอาหารและน้ำให้พอสำหรับสมาชิกทั้งบ้าน</small><div>${needFood?`<button class="secondary" onclick="addRecommendedItem('food',${foodNeed})">🍽️ เพิ่มอาหาร ${needFood}</button>`:''}${needWater?`<button class="secondary" onclick="addRecommendedItem('water',${waterNeed})">💧 เพิ่มน้ำ ${needWater}</button>`:''}</div></div>`:'';
   html=html.replace('<div class="prep-tip">',`<div class="prep-total"><span>🧾 ${cartSummary}</span><b>เหลือ ${gameState.budget} เครดิต</b>${missing}</div><div class="prep-tip">`);
   html=html.replace(/<button class="primary" onclick="buyItem\('([^']+)'\)">ซื้อ 1<\/button>/g,(_,key)=>{const item=shopItems[key];return `<button class="primary" onclick="buyItem('${key}')" ${gameState.budget<item.cost?'disabled':''}>ซื้อ 1</button>`});
   html=html.replace('onclick="enterShelter()"','onclick="reviewPrep()"').replace('เข้าหลุมหลบภัย ▶','ตรวจสอบและเข้าหลุมหลบภัย ▶');
