@@ -900,6 +900,7 @@ prep=function(){
   let html=prepWithCapacity();
   const load=storageLoadForCart(),cap=storageCapacityForCart();
   html=html.replace('</div><div class="prep-tip">',`</div><div class="prep-capacity"><span>📦 ความจุคลังเตรียมเข้า</span><b>${load}/${cap} หน่วย</b><small>${load>=cap?'คลังเต็มแล้ว · อัปเกรดคลังเพื่อเพิ่มพื้นที่':'พื้นที่เหลือ '+(cap-load)+' หน่วย'}</small></div><div class="prep-tip">`);
+  html=html.replace(/<button class="primary shop-buy" onclick="buyItem\('([^']+)'\)"><span>＋<\/span> ซื้อ<\/button>/g,(_,key)=>{const item=shopItems[key];return `<div class="shop-buy-group"><input class="shop-qty" id="qty-${key}" type="number" min="1" value="1" aria-label="จำนวน ${item.name}"><button class="primary shop-buy" onclick="buyItemCount('${key}',document.getElementById('qty-${key}').value)"><span>＋</span> ซื้อ</button></div>`});
   return html;
 };
 function roomLevel(key){return key==='storage'?(gameState.facilities?.storage||0):key==='engine'?(gameState.facilities?.generator||0):key==='medical'?(gameState.facilities?.medical||0):key==='production'?(gameState.facilities?.production||0):0}
