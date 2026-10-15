@@ -434,11 +434,11 @@ updateEventBadge();
 
 // Production queue: recipes consume real resources and finish after in-game time passes.
 const productionRecipes={
-  water:{icon:'💧',name:'น้ำสะอาด x250',desc:'กรองน้ำดิบให้ปลอดภัย · ผลิตเป็นชุดใหญ่จึงใช้เวลาเพียงวันเดียว',days:1,cost:{materials:10,energy:5},apply:()=>gameState.water+=250},
-  food:{icon:'🍽️',name:'อาหารแห้ง x300',desc:'แปรรูปวัตถุดิบเป็นเสบียง · ผลิตจำนวนมากช่วยลดเวลาต่อชุดเล็กน้อย',days:1,cost:{materials:15,energy:4},apply:()=>gameState.food+=300},
-  battery:{icon:'🔋',name:'แบตเตอรี่ +15%',desc:'ประกอบแบตเตอรี่สำรอง ต้องตรวจเซลล์หลายขั้นตอน',days:2,cost:{materials:20,energy:10},apply:()=>gameState.battery=Math.min(100,gameState.battery+15)},
-  medicine:{icon:'🩹',name:'ชุดปฐมพยาบาล x2',desc:'จัดชุดรักษาบาดแผลและฆ่าเชื้อ',days:2,cost:{materials:25,energy:3},apply:()=>gameState.medicine+=2},
-  repair:{icon:'⚙️',name:'ซ่อมเครื่องกำเนิดไฟฟ้า',desc:'ถอดชิ้นส่วน ตรวจระบบ และคืนพลังงานให้ฐาน',days:3,cost:{materials:30,energy:0},apply:()=>gameState.energy=Math.min(100,gameState.energy+20)}
+  water:{icon:'<img src="assets/icons/water.png" alt="น้ำสะอาด">',name:'น้ำสะอาด x250',desc:'กรองน้ำดิบให้ปลอดภัย · ผลิตเป็นชุดใหญ่จึงใช้เวลาเพียงวันเดียว',days:1,cost:{materials:10,energy:5},apply:()=>gameState.water+=250},
+  food:{icon:'<img src="assets/icons/food.png" alt="อาหารแห้ง">',name:'อาหารแห้ง x300',desc:'แปรรูปวัตถุดิบเป็นเสบียง · ผลิตจำนวนมากช่วยลดเวลาต่อชุดเล็กน้อย',days:1,cost:{materials:15,energy:4},apply:()=>gameState.food+=300},
+  battery:{icon:'<img src="assets/icons/battery.png" alt="แบตเตอรี่">',name:'แบตเตอรี่ +15%',desc:'ประกอบแบตเตอรี่สำรอง ต้องตรวจเซลล์หลายขั้นตอน',days:2,cost:{materials:20,energy:10},apply:()=>gameState.battery=Math.min(100,gameState.battery+15)},
+  medicine:{icon:'<img src="assets/icons/medicine.png" alt="ชุดปฐมพยาบาล">',name:'ชุดปฐมพยาบาล x2',desc:'จัดชุดรักษาบาดแผลและฆ่าเชื้อ',days:2,cost:{materials:25,energy:3},apply:()=>gameState.medicine+=2},
+  repair:{icon:'<img src="assets/icons/facility-generator.png" alt="ซ่อมเครื่องกำเนิดไฟฟ้า">',name:'ซ่อมเครื่องกำเนิดไฟฟ้า',desc:'ถอดชิ้นส่วน ตรวจระบบ และคืนพลังงานให้ฐาน',days:3,cost:{materials:30,energy:0},apply:()=>gameState.energy=Math.min(100,gameState.energy+20)}
 };
 let productionQueue=[];
 try{const savedProduction=JSON.parse(localStorage.getItem('last-light-save')||'null');if(savedProduction&&Array.isArray(savedProduction.productionQueue))productionQueue=savedProduction.productionQueue}catch(e){}
