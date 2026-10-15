@@ -321,7 +321,6 @@ let shoppingCart={};
 function buyItem(key){const item=shopItems[key];if(!item)return;item.cost=Math.max(10,Math.round(item.cost/10)*10);if(gameState.budget<item.cost){notify('งบไม่พอสำหรับของชิ้นนี้');return}gameState.budget-=item.cost;shoppingCart[key]=(shoppingCart[key]||0)+1;render('prep');}
 function removeItem(key){const item=shopItems[key];if(!item||!shoppingCart[key])return;shoppingCart[key]--;gameState.budget+=item.cost;if(shoppingCart[key]<=0)delete shoppingCart[key];render('prep');}
 function enterShelter(){
-  const total=Object.values(shoppingCart).reduce((sum,n)=>sum+n,0);if(!total){notify('เลือกของอย่างน้อย 1 รายการก่อนเข้าหลุมหลบภัย');return}
   Object.entries(shoppingCart).forEach(([key,count])=>{for(let i=0;i<count;i++)shopItems[key].apply()});shoppingCart={};gameState.prepDone=true;document.body.classList.remove('prep-mode');persistGame();updateResourceBar();leaveTitleScreen?.();notify('เตรียมฐานเสร็จแล้ว — เข้าหลุมหลบภัย');window.render('overview');
 }
 window.enterShelter=enterShelter;
@@ -852,13 +851,12 @@ function prepReadiness(){
   const profile=difficultyProfile(),residents=Math.max(1,alivePeople().length),foodNeed=Math.ceil(residents*12*profile.foodUse),waterNeed=Math.ceil(residents*8*profile.waterUse);
   const hasFood=(cart.food||0)>=foodNeed,hasWater=(cart.water||0)>=waterNeed;
   const missing=[]; if(!hasFood)missing.push(`อาหารอย่างน้อย ${foodNeed} หน่วย`); if(!hasWater)missing.push(`น้ำอย่างน้อย ${waterNeed} หน่วย`);
-  return {total,missing,ready:total>0&&!missing.length};
+  return {total,missing,ready:true};
 }
 function reviewPrep(){
   const state=prepReadiness();
-  if(!state.total){notify('เลือกของก่อนตรวจสอบการเข้าหลุมหลบภัย');return}
   const rows=Object.entries(shoppingCart).filter(([,n])=>n>0).map(([key,count])=>`<div class="prep-review-row"><span>${shopIcon(key,shopItems[key].icon)}</span><div><b>${shopItems[key].name}</b><small>${prepItemImpact(key)}</small></div><strong>x${count}</strong></div>`).join('');
-  const warning=state.missing.length?`<div class="prep-review-warning"><b>คำแนะนำก่อนเริ่ม</b><span>ควรเตรียม ${state.missing.join(' และ ')} เพื่อให้ครอบครัวผ่านวันแรกได้ปลอดภัย</span></div>`:'';
+  const warning=state.missing.length?`<div class="prep-review-warning"><b>คำแนะนำก่อนเริ่ม · ไม่บังคับ</b><span>ถ้าเตรียม ${state.missing.join(' และ ')} จะช่วยให้ครอบครัวผ่านวันแรกได้ปลอดภัยขึ้น</span></div>`:'';
   main.insertAdjacentHTML('beforeend',`<div class="prep-review-backdrop"><section class="panel prep-review"><span class="tag">ตรวจสอบก่อนเริ่มเกม</span><h2>สรุปเสบียงและอุปกรณ์</h2><p class="muted">ของทั้งหมดจะถูกส่งเข้าคลังและอยู่กับคุณจนจบเกม</p><div class="prep-review-list">${rows}</div>${warning}<div class="prep-review-total"><span>ใช้เงิน ${difficultyProfile().budget-gameState.budget} เครดิต</span><b>เหลือ ${gameState.budget} เครดิต</b></div><div class="prep-review-actions"><button class="secondary" onclick="this.closest('.prep-review-backdrop').remove()">กลับไปแก้ไข</button><button class="primary" onclick="confirmPrep()" ${state.ready?'':'disabled'}>ยืนยันและเข้าหลุมหลบภัย ▶</button></div></section></div>`);
 }
 function confirmPrep(){
@@ -878,7 +876,6 @@ prep=function(){
 const enterShelterBaseFinal=enterShelter;
 enterShelter=function(){
   const state=prepReadiness();
-  if(!state.ready){notify(state.total?`เสบียงไม่พอสำหรับวันแรก · ${state.missing.join(' และ ')}`:'เลือกของอย่างน้อย 1 รายการก่อนเข้าหลุมหลบภัย');return}
   const purchased=Object.entries(shoppingCart).filter(([,count])=>count>0).map(([key,count])=>`${shopItems[key].name.replace(/ x1$/,'')} x${count}`);
   eventHistory.push({day:gameState.day,place:'ร้านค้าก่อนเริ่มเกม',text:`เตรียมของเข้าหลุมหลบภัย: ${purchased.join(' · ')}`});
   enterShelterBaseFinal();
