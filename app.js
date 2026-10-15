@@ -566,6 +566,7 @@ function liveShelterOverview(){
   html=html.replace('<div class="command-layout">',`<div class="daily-objective"><b>ภารกิจประจำวัน</b><span>${dailyObjective()}</span></div><div class="command-layout">`);  if(storyFlags.losses){html=html.replace('</div><div class="command-layout">',`</div><div class="memorial-banner"><b>ห้องรำลึก</b><span>${storyFlags.losses} คนจากครอบครัวจากไป${storyFlags.lastLoss?` · ล่าสุด: ${storyFlags.lastLoss}`:''}</span></div><div class="command-layout">`)}
   html=html.replace(/<button class="task-card" onclick="completeTask\('[^']+','พักผ่อน'\)">[\s\S]*?<\/button>/g,(_,card)=>`<div class="task-card task-resting" aria-label="กำลังพักผ่อน"><span class="task-symbol">🛏️</span><div><strong>กำลังพักผ่อน</strong><small>สมาชิกอยู่ในห้องนอน · ไม่ใช่งานผลิต</small></div></div>`);
   if(missionState){missionState.members.forEach(i=>{html=html.replace(new RegExp(`<button class="character-card" onclick="showCharacter\\(${i}\\)">[\\s\\S]*?<\\/button>`),'')});html=html.replace('</section><section class="panel command-tasks">',`</section><div class="away-banner"><b>🧭 ทีมออกสำรวจ</b><span>${missionState.members.map(i=>people[i].name).join(' และ ')} · คาดว่าจะกลับวันที่ ${missionState.returnDay}</span><small>จุดหมายและผลการสำรวจยังเป็นความลับ</small></div>${baseAbsenceEffects()}<section class="panel command-tasks">`)}
+  html=html.replace(/<section class="panel command-tasks">[\s\S]*?<\/section>/,'');
   return html;
 }
 overview=liveShelterOverview;
