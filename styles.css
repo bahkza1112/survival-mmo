@@ -119,4 +119,6 @@
 .expedition-warning{margin:12px 0;padding:11px 13px;border:1px solid #e06b5f;border-left:3px solid #f0a04b;border-radius:7px;background:#321f22;color:#ffd6ae;font-size:13px;line-height:1.5}
 .expedition-presets{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0}.expedition-presets b{color:#ffe2a0;margin-right:3px}.expedition-presets .secondary{padding:6px 10px;font-size:12px}
 .ammo-input input{max-width:100px}.ammo-input small{display:block;color:#9db3b4;margin-top:3px}
+.combat-presets{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.combat-presets .secondary{padding:5px 8px;font-size:11px}
+.expedition-profiles{display:grid;gap:5px;margin:8px 0;padding:9px 10px;border:1px solid #31515d;border-radius:8px;background:#0c2029}.expedition-profiles small{color:#9fb7bd}.expedition-profiles>div{display:flex;gap:6px;flex-wrap:wrap}.expedition-profiles .secondary{padding:5px 8px;font-size:11px}
 .mission-carry-summary{margin:10px 0;padding:10px 12px;border-left:3px solid #67d6c8;background:#102b33;color:#b9d1d1}
