@@ -76,7 +76,7 @@ let lastOutcomeApplied=false;
 function formatCount(value){return value>=1000?(value/1000).toFixed(1)+'K':String(value)}
 function updateResourceBar(){
   const map={foodValue:formatCount(gameState.food),waterValue:formatCount(gameState.water),materialsValue:formatCount(gameState.materials),medicineValue:gameState.medicine,energyValue:`${gameState.energy}%`,batteryValue:`${gameState.battery}%`};
-  Object.entries(map).forEach(([id,value])=>{const el=document.getElementById(id);if(el)el.textContent=value});const peopleCount=document.querySelector('.people-count b');if(peopleCount)peopleCount.textContent=`${alivePeople().filter(p=>!p.expeditionStatus).length}/5`;
+  Object.entries(map).forEach(([id,value])=>{const el=document.getElementById(id);if(el)el.textContent=value});const airIcon=document.getElementById('airIcon'),surfaceIcon=document.getElementById('surfaceIcon');if(airIcon)airIcon.src=gameState.temperature>0?'assets/icons/heat-suit.png':'assets/icons/cold-suit.png';if(surfaceIcon)surfaceIcon.src=gameState.temperature>0?'assets/icons/heat-suit.png':'assets/icons/cold-suit.png';const peopleCount=document.querySelector('.people-count b');if(peopleCount)peopleCount.textContent=`${alivePeople().filter(p=>!p.expeditionStatus).length}/5`;
 }
 function applyOutcome(){
   if(lastOutcomeApplied)return;
