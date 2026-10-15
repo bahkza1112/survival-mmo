@@ -490,7 +490,7 @@ processProductionQueue();
 
 // Long-form expeditions: teams leave for full days, the destination stays hidden until return.
 let missionState=pendingMissionState;let missionQueue=pendingMissionQueue;
-const weaponCatalog={none:{name:'ไม่ใช้อาวุธ',ammo:null,power:0,weight:0},pistol:{name:'ปืนสั้น',ammo:'pistol',power:8,weight:1},rifle:{name:'ปืนยาว',ammo:'rifle',power:13,weight:1},sniper:{name:'ปืนสไนเปอร์',ammo:'sniper',power:20,weight:1},machineGun:{name:'ปืนกลหนัก',ammo:'machineGun',power:22,weight:1},shotgun:{name:'ปืนลูกซอง',ammo:'shotgun',power:16,weight:1},melee:{name:'อาวุธประชิด',ammo:null,power:5,weight:1}};
+const weaponCatalog={none:{name:'ไม่ใช้อาวุธ',ammo:null,power:0,weight:0},pistol:{name:'ปืนสั้น',ammo:'pistol',power:8,weight:5},rifle:{name:'ปืนยาว',ammo:'rifle',power:13,weight:5},sniper:{name:'ปืนสไนเปอร์',ammo:'sniper',power:20,weight:5},machineGun:{name:'ปืนกลหนัก',ammo:'machineGun',power:22,weight:5},shotgun:{name:'ปืนลูกซอง',ammo:'shotgun',power:16,weight:5},melee:{name:'อาวุธประชิด',ammo:null,power:5,weight:1}};
 const armorCatalog={none:{name:'ไม่ใส่เกราะ',protection:0,weight:0},light:{name:'เสื้อเกราะเบา',protection:7,weight:2},heavy:{name:'เสื้อเกราะหนัก',protection:14,weight:4}};
 const grenadeCatalog={none:{name:'ไม่พกระเบิด',weight:0},frag:{name:'ระเบิดมือ',weight:1,power:12},smoke:{name:'ระเบิดควัน',weight:1,power:4},flash:{name:'ระเบิดแสง',weight:1,power:7}};
 let expeditionPlan={days:1,risk:'กลาง',gear:{rations:true,medical:false,scanner:false,weapon:'rifle',armor:'light',grenade:'smoke'},useHeatSuit:false,useColdSuit:false,supplyFood:0,supplyWater:0,medicalCount:0,scannerCount:0};
